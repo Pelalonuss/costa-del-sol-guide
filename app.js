@@ -149,18 +149,118 @@
   });
 
   /* ---------- Suche ---------- */
+  var SECTION_NAMES = {
+    uebersicht: 'Übersicht', tage: 'Die 11 Tage', essen: 'Essen',
+    shopping: 'Shopping', achtung: 'Achtung', budget: 'Budget', extras: 'Extras'
+  };
+
+  var marks = [];      /* alle gefundenen Fundstellen in DOM-Reihenfolge */
+  var markIndex = -1;  /* welche gerade angesprungen ist */
+
+  /* Akzente und Umlaute einebnen, damit "malaga" auch "Málaga" findet.
+     Jede Ersetzung ist 1 Zeichen -> 1 Zeichen, damit die Fundstellen-Positionen
+     im Originaltext gültig bleiben. */
+  function fold(s) {
+    return s.toLowerCase()
+      .replace(/[áàâãä]/g, 'a').replace(/[éèêë]/g, 'e').replace(/[íìîï]/g, 'i')
+      .replace(/[óòôõö]/g, 'o').replace(/[úùûü]/g, 'u')
+      .replace(/[ñ]/g, 'n').replace(/[ç]/g, 'c');
+  }
+
   var si = document.getElementById('search');
   if (si) {
     var timer = null;
     si.addEventListener('input', function () {
       clearTimeout(timer);
-      timer = setTimeout(function () { runSearch(si.value.trim().toLowerCase()); }, 130);
+      timer = setTimeout(function () { runSearch(fold(si.value.trim())); }, 160);
+    });
+    /* Enter springt zur nächsten Fundstelle */
+    si.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' || !marks.length) return;
+      e.preventDefault();
+      gotoMark(markIndex + (e.shiftKey ? -1 : 1));
     });
   }
 
+  /* Markierungen wieder entfernen und Textknoten zusammenführen */
+  function clearHighlights() {
+    var old = document.querySelectorAll('mark.hl');
+    Array.prototype.forEach.call(old, function (m) {
+      var p = m.parentNode;
+      if (!p) return;
+      p.replaceChild(document.createTextNode(m.textContent), m);
+      p.normalize();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.hitbar'), function (b) { b.remove(); });
+    marks = [];
+    markIndex = -1;
+  }
+
+  /* Suchbegriff im sichtbaren Text eines Elements einfärben */
+  function highlightIn(el, q) {
+    var found = [];
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || fold(n.nodeValue).indexOf(q) === -1) return NodeFilter.FILTER_REJECT;
+        var p = n.parentNode;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        var tag = p.nodeName;
+        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'MARK') return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    nodes.forEach(function (node) {
+      var txt = node.nodeValue, low = fold(txt);
+      var idx = low.indexOf(q);
+      if (idx === -1) return;
+      var frag = document.createDocumentFragment();
+      var i = 0;
+      while (idx !== -1) {
+        if (idx > i) frag.appendChild(document.createTextNode(txt.slice(i, idx)));
+        var m = document.createElement('mark');
+        m.className = 'hl';
+        m.textContent = txt.slice(idx, idx + q.length);
+        frag.appendChild(m);
+        found.push(m);
+        i = idx + q.length;
+        idx = low.indexOf(q, i);
+      }
+      if (i < txt.length) frag.appendChild(document.createTextNode(txt.slice(i)));
+      if (node.parentNode) node.parentNode.replaceChild(frag, node);
+    });
+    return found;
+  }
+
+  /* Zu einer bestimmten Fundstelle springen */
+  function gotoMark(i) {
+    if (!marks.length) return;
+    if (i < 0) i = marks.length - 1;
+    if (i >= marks.length) i = 0;
+    markIndex = i;
+    Array.prototype.forEach.call(document.querySelectorAll('mark.hl.current'), function (m) { m.classList.remove('current'); });
+    var m = marks[i];
+    m.classList.add('current');
+    var day = m.closest ? m.closest('.day') : null;
+    if (day) day.classList.add('open');
+    m.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    updateCounter();
+  }
+
+  function updateCounter() {
+    var el = document.getElementById('hitPos');
+    if (el) el.textContent = marks.length ? (markIndex < 0 ? 1 : markIndex + 1) + ' / ' + marks.length : '0';
+  }
+
   function runSearch(q) {
-    var hitCount = 0;
     var units = document.querySelectorAll('[data-searchable]');
+    var info = document.getElementById('searchResultInfo');
+    var nr = document.getElementById('noresult');
+
+    clearHighlights();
+
     if (!q) {
       Array.prototype.forEach.call(units, function (u) { u.classList.remove('hidden-by-search'); });
       Array.prototype.forEach.call(document.querySelectorAll('.sect-h'), function (s) { s.classList.remove('hidden-by-search'); });
@@ -169,33 +269,79 @@
       var backTo = activeTab ? activeTab.dataset.target : LS.get('cds-tab', 'uebersicht');
       if (!document.getElementById(backTo)) backTo = 'uebersicht';
       panels.forEach(function (p) { p.classList.toggle('on', p.id === backTo); });
-      var nr0 = document.getElementById('noresult'); if (nr0) nr0.style.display = 'none';
-      var sr = document.getElementById('searchResultInfo'); if (sr) sr.textContent = '';
+      document.body.classList.remove('searching');
+      if (nr) nr.style.display = 'none';
+      if (info) info.innerHTML = '';
       return;
     }
-    /* Suche über alle Panels: alle anzeigen, Treffer filtern */
+
+    /* Suche läuft über alle Bereiche gleichzeitig */
     panels.forEach(function (p) { p.classList.add('on'); });
+    document.body.classList.add('searching');
     Array.prototype.forEach.call(document.querySelectorAll('.sect-h'), function (s) { s.classList.add('hidden-by-search'); });
+
+    var sections = 0;
     Array.prototype.forEach.call(units, function (u) {
-      var txt = (u.dataset.kw || '') + ' ' + u.textContent.toLowerCase();
+      var txt = fold((u.dataset.kw || '') + ' ' + u.textContent);
       var hit = txt.indexOf(q) !== -1;
       u.classList.toggle('hidden-by-search', !hit);
-      if (hit) {
-        hitCount++;
-        if (u.classList.contains('day')) u.classList.add('open');
-      }
+      if (!hit) return;
+
+      sections++;
+      if (u.classList.contains('day')) u.classList.add('open');
+
+      /* Schild darüber: in welchem Bereich steckt der Treffer? */
+      var panel = u.closest('.panel');
+      var name = panel ? (SECTION_NAMES[panel.id] || panel.id) : '';
+      var found = highlightIn(u, q) || [];
+      marks = marks.concat(found);
+
+      var bar = document.createElement('div');
+      bar.className = 'hitbar';
+      bar.innerHTML = '<span class="hitbar-sec">' + name + '</span>' +
+        '<span class="hitbar-n">' + (found.length ? found.length + (found.length === 1 ? ' Fundstelle' : ' Fundstellen') : 'Stichwort-Treffer') + '</span>';
+      if (u.parentNode) u.parentNode.insertBefore(bar, u);
     });
-    var nr = document.getElementById('noresult');
-    if (nr) nr.style.display = hitCount ? 'none' : 'block';
-    var info = document.getElementById('searchResultInfo');
-    if (info) info.textContent = hitCount + ' Treffer für "' + q + '" (alle Bereiche)';
+
+    if (nr) nr.style.display = sections ? 'none' : 'block';
+
+    if (info) {
+      if (!sections) {
+        info.innerHTML = '';
+      } else {
+        info.innerHTML =
+          '<b>' + marks.length + '</b> Fundstelle' + (marks.length === 1 ? '' : 'n') +
+          ' in <b>' + sections + '</b> Abschnitt' + (sections === 1 ? '' : 'en') +
+          ' <span class="hitnav">' +
+          '<button type="button" class="hitbtn" id="hitPrev" aria-label="Vorherige Fundstelle">&#8249;</button>' +
+          '<span id="hitPos">' + (marks.length ? '1 / ' + marks.length : '0') + '</span>' +
+          '<button type="button" class="hitbtn" id="hitNext" aria-label="Nächste Fundstelle">&#8250;</button>' +
+          '</span>' +
+          '<button type="button" class="hitbtn wide" id="hitReset">Suche beenden</button>';
+
+        var pv = document.getElementById('hitPrev'), nx = document.getElementById('hitNext'), rs = document.getElementById('hitReset');
+        if (pv) pv.addEventListener('click', function () { gotoMark(markIndex - 1); });
+        if (nx) nx.addEventListener('click', function () { gotoMark(markIndex + 1); });
+        if (rs) rs.addEventListener('click', resetSearch);
+      }
+    }
+
+    /* automatisch zur ersten Fundstelle springen */
+    if (marks.length) setTimeout(function () { gotoMark(0); }, 60);
+  }
+
+  function resetSearch() {
+    if (si) { si.value = ''; si.blur(); }
+    runSearch('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   var clearBtn = document.getElementById('clearSearch');
-  if (clearBtn) clearBtn.addEventListener('click', function () {
-    if (si) { si.value = ''; }
-    runSearch('');
-    showTab(LS.get('cds-tab', 'uebersicht'), false);
+  if (clearBtn) clearBtn.addEventListener('click', resetSearch);
+
+  /* Escape beendet die Suche */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && si && si.value) resetSearch();
   });
 
   /* ---------- Nach oben ---------- */

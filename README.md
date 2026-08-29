@@ -23,7 +23,7 @@ Eine einzelne, offline-taugliche Webseite — gebaut, um sie unterwegs auf dem H
 
 - **Offline nutzbar** — einmal geöffnet, funktioniert die Seite auch ohne Netz (Service Worker)
 - **Als App installierbar** — im Browser auf „Zum Startbildschirm hinzufügen" tippen
-- **Volltextsuche** über alle Bereiche
+- **Volltextsuche** über alle Bereiche — Treffer werden farbig markiert, gezählt und mit ‹ › durchgesprungen (Enter = nächster, Esc = beenden). Über jedem Fundort steht, aus welchem Bereich er stammt. Groß-/Kleinschreibung und Akzente sind egal: „malaga" findet auch „Málaga"
 - **Abhakbare Checklisten** (Sofort-To-dos, Packliste) — Haken bleiben gespeichert
 - **Der aktuelle Reisetag klappt sich automatisch auf**
 - **Hell/Dunkel**, mobile-first
