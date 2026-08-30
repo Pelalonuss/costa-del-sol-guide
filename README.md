@@ -12,6 +12,7 @@ Eine einzelne, offline-taugliche Webseite — gebaut, um sie unterwegs auf dem H
 | Bereich | Inhalt |
 |---|---|
 | **Übersicht** | Sofort-To-dos, Hotel- und Standortinfos, Wettervorhersage für genau diese Tage, die 12 wichtigsten Spartipps |
+| **Ankunft** | Der Anreisetag Schritt für Schritt zum Abhaken: was am Mietwagenschalter im Vertrag stehen muss, das Zwei-Minuten-Video am Auto, was vor dem Losfahren zu prüfen ist, und die sechs Dinge, die man an der Hotelrezeption in einem Rutsch erledigt |
 | **Die 11 Tage** | Tag für Tag mit Zeitleiste, echten Kosten, Parkplätzen und den Fallen, die genau dort lauern |
 | **Essen** | Menú-del-día-Strategie, konkrete Adressen, Gerichte mit Preisen, Touristenfallen erkennen, Rechnungs-Tricks |
 | **Shopping** | Marktkalender für jeden einzelnen Reisetag, Outlets, Vintage-Läden in Málaga |

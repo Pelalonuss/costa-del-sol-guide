@@ -5,7 +5,7 @@
      wird die neue Version geholt und beim nächsten Laden benutzt)
    Damit bleibt die Seite offline nutzbar UND holt sich Updates von selbst. */
 
-var CACHE = 'costa-del-sol-guide-v3';
+var CACHE = 'costa-del-sol-guide-v4';
 var ASSETS = ['./', './index.html', './style.css', './app.js', './manifest.webmanifest', './assets/icon.svg'];
 
 self.addEventListener('install', function (e) {

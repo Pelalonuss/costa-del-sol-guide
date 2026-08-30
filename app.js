@@ -140,6 +140,14 @@
     if (LS.get(key) === '1') cb.checked = true;
     cb.addEventListener('change', function () { LS.set(key, cb.checked ? '1' : '0'); });
   });
+  var resetAnk = document.getElementById('resetAnkunft');
+  if (resetAnk) resetAnk.addEventListener('click', function () {
+    if (!confirm('Alle Haken im Ankunft-Bereich zurücksetzen?')) return;
+    Array.prototype.forEach.call(document.querySelectorAll('#ankunft .check input[type=checkbox]'), function (cb) {
+      cb.checked = false; LS.set('cds-chk-' + (cb.dataset.k || cb.id || ''), '0');
+    });
+  });
+
   var resetBtn = document.getElementById('resetChecks');
   if (resetBtn) resetBtn.addEventListener('click', function () {
     if (!confirm('Alle Haken zurücksetzen?')) return;
@@ -150,7 +158,7 @@
 
   /* ---------- Suche ---------- */
   var SECTION_NAMES = {
-    uebersicht: 'Übersicht', tage: 'Die 11 Tage', essen: 'Essen',
+    uebersicht: 'Übersicht', ankunft: 'Ankunft', tage: 'Die 11 Tage', essen: 'Essen',
     shopping: 'Shopping', achtung: 'Achtung', budget: 'Budget', extras: 'Extras'
   };
 

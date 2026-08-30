@@ -190,6 +190,19 @@ button{font:inherit;color:inherit}
 .tl .what{font-weight:700;font-size:15px;margin:1px 0 2px}
 .tl .det{font-size:14px;color:var(--ink-2);margin:0}
 
+/* ---------- Schritt-Nummern (Ankunft) ---------- */
+.stepnum{
+  display:inline-grid;place-items:center;
+  width:30px;height:30px;flex:0 0 30px;margin-right:10px;
+  border-radius:50%;background:linear-gradient(150deg,var(--terra),var(--terra-2));
+  color:#fff;font-family:var(--font);font-size:15px;font-weight:800;line-height:1;
+  vertical-align:middle;translate:0 -2px;
+}
+#ankunft .card{margin-bottom:14px}
+#ankunft .card h3{display:flex;align-items:center;font-size:19px;margin-bottom:10px}
+#ankunft .check li{padding:10px 0}
+#ankunft .phrase{padding:10px 0}
+
 /* ---------- Boxen ---------- */
 .note{
   border-radius:var(--r-sm);padding:12px 14px;font-size:14px;margin:12px 0;

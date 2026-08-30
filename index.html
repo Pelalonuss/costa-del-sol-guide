@@ -26,6 +26,7 @@
 <nav class="tabs" aria-label="Bereiche">
   <div class="wrap tabs-in" role="tablist">
     <button class="tab" role="tab" data-target="uebersicht" aria-selected="true">Übersicht</button>
+    <button class="tab" role="tab" data-target="ankunft" aria-selected="false">Ankunft</button>
     <button class="tab" role="tab" data-target="tage" aria-selected="false">Die 11 Tage</button>
     <button class="tab" role="tab" data-target="essen" aria-selected="false">Essen</button>
     <button class="tab" role="tab" data-target="shopping" aria-selected="false">Shopping</button>
@@ -71,6 +72,8 @@
       <li><input type="checkbox" data-k="todo-parken"><span><b>Hotelgarage reservieren &amp; Preis schriftlich bestätigen lassen</b> — Tel. <a href="tel:+34952385200">+34 952 38 52 00</a>. Plätze sind begrenzt, Preis liegt bei 10–14 €/Tag. Fragt auch nach der Einfahrtshöhe (viele Garagen 2,00–2,20 m).</span></li>
       <li><input type="checkbox" data-k="todo-drohne"><span><b>Falls Drohne mitkommt:</b> Betreiber-Registrierung (Austro Control / LBA) + A1/A3-Nachweis + Nummer außen aufkleben. <b>In Torremolinos selbst dürft ihr nicht fliegen</b> (Flughafen-Kontrollzone). App <a href="https://drones.enaire.es" target="_blank" rel="noopener">ENAIRE Drones</a> installieren.</span></li>
     </ul>
+    <div class="note tip"><b>Für den Anreisetag selbst</b> gibt es eine eigene Seite: Schritt für Schritt am Mietwagenschalter und an der Rezeption, zum Abhaken.<br>
+      <a class="btn solid" href="#ankunft" data-goto="ankunft" style="margin-top:8px">Zur Ankunfts-Checkliste →</a></div>
   </div>
 
   <div class="sect-h"><h2>Eure Basis</h2></div>
@@ -204,6 +207,145 @@
 
 </section>
 
+<!-- ==================== ANKUNFT ==================== -->
+<section class="panel" id="ankunft" role="tabpanel">
+
+  <div class="sect-h" data-searchable data-kw="ankunft montag flughafen erste stunden">
+    <h2>Die ersten zwei Stunden</h2>
+    <p>Alles, was ihr am Flughafen und im Hotel erledigen müsst — in der Reihenfolge, in der es dran ist. Zum Abhaken, ihr könnt es mit einer Hand am Koffer benutzen.</p>
+  </div>
+
+  <div class="note money" data-searchable data-kw="warum wichtig ankunft zusammenfassung">
+    <b>Worum es überhaupt geht, in drei Sätzen:</b> Am Mietwagenschalter wird versucht, euch eine teure Versicherung und eine schlechte Tankregel unterzuschieben — das kostet schnell 300 €. Bei der Rückgabe werden manchmal Schäden erfunden, die vorher schon da waren — dagegen hilft nur ein Video. Und im Hotel bekommt ihr Dinge, die nichts kosten, aber nur wenn ihr sie beim Check-in ansprecht.
+  </div>
+
+  <!-- SCHRITT 1 -->
+  <div class="card" data-searchable data-kw="schritt 1 vorbereitung kreditkarte führerschein flugzeug">
+    <h3><span class="stepnum">1</span> Noch im Flieger: kurz durchgehen</h3>
+    <ul class="check">
+      <li><input type="checkbox" data-k="ank-kk"><span><b>Echte Kreditkarte dabei?</b> Auf den Namen des <b>Hauptfahrers</b>, mindestens 1.500 € frei.<br><span class="small">Warum: Mit einer Debitkarte (auch Visa Debit) verweigern viele Vermieter die Kaution — und drängen euch dann in die teure Versicherung. Mit Kreditkarte seid ihr nicht erpressbar.</span></span></li>
+      <li><input type="checkbox" data-k="ank-fs"><span><b>Beide Führerscheine</b> griffbereit — auch der von der Person, die als Zusatzfahrer eingetragen wird.</span></li>
+      <li><input type="checkbox" data-k="ank-buch"><span><b>Buchungsbestätigung</b> als PDF auf dem Handy, am besten auch ausgedruckt. Da muss draufstehen, welche Versicherung enthalten ist.</span></li>
+      <li><input type="checkbox" data-k="ank-akku"><span><b>Handy geladen.</b> Ihr braucht gleich die Kamera — und zwar bevor ihr losfahrt, nicht danach.</span></li>
+      <li><input type="checkbox" data-k="ank-checkin"><span><b>Online-Check-in beim Hotel</b> schon gemacht? Spart am Montag 20–30 Minuten Schlange.</span></li>
+    </ul>
+  </div>
+
+  <!-- SCHRITT 2 -->
+  <div class="card" data-searchable data-kw="schritt 2 mietwagen schalter vertrag lleno franquicia fianza conductor adicional">
+    <h3><span class="stepnum">2</span> Am Schalter: vier Zeilen im Vertrag</h3>
+    <p>Bevor ihr unterschreibt, sucht ihr genau diese vier Zeilen. Mehr müsst ihr nicht prüfen.</p>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Das steht im Vertrag</th><th>Das muss dastehen</th><th>Sonst passiert</th></tr></thead>
+      <tbody>
+        <tr><td><b>Combustible</b> / Fuel</td><td><b>Lleno / Lleno</b><br><span class="small">(voll / voll)</span></td><td>Bei „Lleno / Vacío" (voll/leer) zahlt ihr einen ganzen Tank zum überhöhten Preis plus Servicegebühr. <b>40–70 € weg.</b></td></tr>
+        <tr><td><b>Franquicia</b> / Excess</td><td><b>0 €</b> oder genau der Betrag, den ihr gebucht habt</td><td>Steht da plötzlich 1.200 €, hat man euch eine andere Versicherung untergeschoben.</td></tr>
+        <tr><td><b>Fianza</b> / Depósito</td><td>Derselbe Betrag wie in eurer Buchung</td><td>Manche blocken mehr als vereinbart auf der Kreditkarte. Das Geld ist dann 7–30 Tage weg.</td></tr>
+        <tr><td><b>Conductor adicional</b></td><td><b>Beide Namen</b></td><td>Fährt jemand, der nicht eingetragen ist, und es passiert etwas: <b>kompletter Versicherungsverlust.</b></td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Sie werden euch eine Versicherung verkaufen wollen</h4>
+    <div class="note warn">Das ist kein Zufall, das ist die Masche. Ein Muster, das immer wieder berichtet wird: Wer die Zusatzversicherung kauft, ist in 5 Minuten fertig. Wer sie ablehnt, braucht über eine Stunde. Das nennt sich Zermürbungstaktik — <b>bleibt einfach freundlich und beharrlich.</b><br><br>
+      <b>Was sie sagen werden, und was daran stimmt:</b> „Ihre Versicherung deckt keine Reifen, Scheiben, Unterboden und Dach." Das ist tatsächlich <b>wahr</b> — die Standard-Versicherung schließt genau das aus. Ob euch das 250–500 € für zehn Tage wert ist, müsst ihr entscheiden. Auf den Bergstraßen nach Ronda und zum Caminito ist Steinschlag real.<br><br>
+      <b>Nicht akzeptieren:</b> ein „Upgrade", das plötzlich Geld kostet. Wenn eure gebuchte Kategorie nicht da ist, muss das Upgrade <b>kostenlos</b> sein.</div>
+
+    <h4>Sätze, die helfen</h4>
+    <div class="phrase"><div class="es">No, gracias. Ya tengo seguro a todo riesgo.</div><div class="de">Nein danke, ich habe schon eine Vollkasko.</div><div class="pr">no GRA-thias, ja TEN-go SE-gu-ro a TO-do ri-ES-go</div></div>
+    <div class="phrase"><div class="es">Lleno / lleno, por favor. Está en mi reserva.</div><div class="de">Voll/voll bitte, das steht in meiner Buchung.</div><div class="pr">JE-no JE-no por fa-WOR</div></div>
+    <div class="phrase"><div class="es">¿Me lo puede poner por escrito?</div><div class="de">Können Sie mir das schriftlich geben?</div><div class="pr">me lo PWE-de po-NER por es-KRI-to</div></div>
+    <p class="small">Englisch geht am Flughafen Málaga überall. Diese Sätze sind nur nützlich, um zu zeigen, dass ihr wisst, worum es geht — das allein ändert oft schon den Ton.</p>
+  </div>
+
+  <!-- SCHRITT 3 -->
+  <div class="card" data-searchable data-kw="schritt 3 video auto filmen kratzer felgen dach beweis">
+    <h3><span class="stepnum">3</span> Am Auto: das Zwei-Minuten-Video</h3>
+    <div class="note tip"><b>Das ist der wichtigste Punkt auf dieser ganzen Seite.</b> Ohne Video seid ihr bei einem erfundenen Schaden praktisch beweislos. Ihr habt Kameras dabei — das ist euer großer Vorteil gegenüber normalen Touristen. Nutzt ihn.</div>
+    <p><b>So geht's:</b> Handy oder Kamera an, einmal <b>langsam im Gehen ums Auto</b>, und dabei <b>laut mitsprechen</b> („Kratzer vorne links", „Felge hinten rechts schon beschädigt"). Der Ton ist Teil des Beweises.</p>
+    <p><b>Diese sechs Dinge extra filmen — hier werden am häufigsten Schäden erfunden:</b></p>
+    <ul class="check">
+      <li><input type="checkbox" data-k="ank-v1"><span><b>Alle vier Felgen einzeln</b> — Bordsteinkratzer sind der Klassiker</span></li>
+      <li><input type="checkbox" data-k="ank-v2"><span><b>Windschutzscheibe von innen gegen den Himmel</b> — so seht ihr Steinschläge, die von außen unsichtbar sind</span></li>
+      <li><input type="checkbox" data-k="ank-v3"><span><b>Das Dach</b> — auf Zehenspitzen oder Handy hochhalten. „Dachschaden" ist eine Standardmasche, weil da nie jemand hinschaut</span></li>
+      <li><input type="checkbox" data-k="ank-v4"><span><b>Unterboden und Frontschürze</b>, so gut es geht</span></li>
+      <li><input type="checkbox" data-k="ank-v5"><span><b>Innenraum</b>: Sitze (Brandlöcher, Flecken), Kofferraum</span></li>
+      <li><input type="checkbox" data-k="ank-v6"><span><b>Tankanzeige und Kilometerstand — im selben Video</b>, ohne Schnitt</span></li>
+    </ul>
+    <div class="note"><b>Danach:</b> Das Video <b>separat wegspeichern</b> (nicht in den Urlaubsordner, wo es beim Aussortieren untergeht) und <b>nicht löschen, bis die letzte Kreditkartenabrechnung durch ist</b> — Nachbelastungen kommen oft erst nach 4–8 Wochen.</div>
+  </div>
+
+  <!-- SCHRITT 4 -->
+  <div class="card" data-searchable data-kw="schritt 4 losfahren v16 warnweste tankdeckel benzin diesel grün">
+    <h3><span class="stepnum">4</span> Bevor ihr losfahrt</h3>
+    <ul class="check">
+      <li><input type="checkbox" data-k="ank-v16"><span><b>Liegt die V16-Warnleuchte im Handschuhfach?</b> <b>Foto machen.</b><br><span class="small">Seit dem 01.01.2026 ist dieses vernetzte Warnlicht in Spanien Pflicht — <b>Warndreiecke gelten nicht mehr</b>. Der Vermieter muss es stellen. Fehlt es: Ersatz verlangen und im Vertrag vermerken lassen. Bußgeld sonst bis 200 €.</span></span></li>
+      <li><input type="checkbox" data-k="ank-weste"><span><b>Warnweste da?</b> Bleibt zusätzlich Pflicht.</span></li>
+      <li><input type="checkbox" data-k="ank-tank"><span><b>Tankdeckel-Aufkleber fotografieren: Benzin oder Diesel?</b><br><span class="small">⚠️ In Spanien ist <b>Grün = Benzin</b> („Gasolina 95") und <b>Schwarz = Diesel</b> („Gasóleo A"). Das ist genau andersherum, als viele es erwarten. Falschtanken kostet 500–1.500 € und wird von <b>keiner</b> Versicherung bezahlt.</span></span></li>
+      <li><input type="checkbox" data-k="ank-klima"><span><b>Klimaanlage kurz testen</b>, bevor ihr wegfahrt. Bei 30 °C ist das keine Kleinigkeit.</span></li>
+      <li><input type="checkbox" data-k="ank-halter"><span><b>Handyhalterung und Ladekabel</b> anschließen. Handy in der Hand = 200 € plus 6 Punkte.</span></li>
+      <li><input type="checkbox" data-k="ank-maps"><span><b>Google Maps offline geladen?</b> Bereich „Provinz Málaga". Am Caminito habt ihr fast keinen Empfang.</span></li>
+    </ul>
+  </div>
+
+  <!-- SCHRITT 5 -->
+  <div class="card" data-searchable data-kw="schritt 5 hotel rezeption check-in zimmer krystal garage handtuchkarte wlan">
+    <h3><span class="stepnum">5</span> An der Rezeption: sechs Dinge auf einmal</h3>
+    <p>Ihr steht sowieso einmal da. Sagt alles in einem Rutsch, dann müsst ihr nicht dreimal wiederkommen. <b>Deutsch oder Englisch reicht völlig</b> — im Riu wird beides gesprochen.</p>
+    <ul class="check">
+      <li><input type="checkbox" data-k="ank-zimmer"><span><b>Zimmerwunsch — kostet nichts, fragen lohnt sich</b><br>
+        Vier Sachen, in dieser Reihenfolge wichtig:<br>
+        1. <b>Hauptgebäude</b> (das mit 8 Etagen), nicht das Nebengebäude<br>
+        2. <b>Hohe Etage, 5 bis 8</b><br>
+        3. <b>Meerblick nach Süden/Südwesten</b> → dann habt ihr den Sonnenuntergang über dem Wasser direkt vom Balkon, jeden Abend gegen 20:40<br>
+        4. <b>Weg von den Aufzügen</b> (die machen laut „pling") und <b>nicht über der Poolbar</b><br>
+        <span class="small">Sagt ruhig ehrlich, dass ihr <b>Videoaufnahmen vom Balkon</b> macht. Das ist ein plausibler Grund für einen Meerblick-Wunsch, und RIU-Class-Mitglieder werden bevorzugt.</span></span></li>
+      <li><input type="checkbox" data-k="ank-krystal"><span><b>Restaurant „Krystal" reservieren — sofort heute</b><br><span class="small">Das À-la-carte-Restaurant ist bei RIU-Palace-Häusern nach zwei Tagen ausgebucht. Fragt gleich mit, ob es im Halbpensionspreis enthalten ist oder Aufpreis kostet.</span></span></li>
+      <li><input type="checkbox" data-k="ank-garage"><span><b>Garage: Platz, Preis und Höhe klären</b><br><span class="small">Rechnet mit 10–14 € pro Tag, Plätze sind begrenzt. Fragt nach der <b>Einfahrtshöhe</b> — viele Tiefgaragen dort haben nur 2,00–2,20 m. Und lasst euch den Preis bestätigen.</span></span></li>
+      <li><input type="checkbox" data-k="ank-handtuch"><span><b>Handtuchkarte: Kaution?</b><br><span class="small">RIU arbeitet mit Handtuchkarten (Tausch Handtuch gegen Handtuch). Fragt, ob eine Kaution anfällt und was ein verlorenes Handtuch kostet. Beim Check-out <b>Karte und Handtuch zurückgeben</b>, sonst wird es abgebucht.</span></span></li>
+      <li><input type="checkbox" data-k="ank-wlan"><span><b>WLAN-Passwort holen — und im Zimmer sofort einen Speedtest machen</b><br><span class="small">Für euren Video-Upload ist das die wichtigste Zahl der ganzen Reise. Ladet nachts hoch, dann ist das Netz am schnellsten.</span></span></li>
+      <li><input type="checkbox" data-k="ank-zeiten"><span><b>Frühstückszeiten und Abendessen-Zeiten bestätigen lassen</b><br><span class="small">Frühstück ist 07:30–10:30. Die Abendessenszeiten sind nicht offiziell veröffentlicht — einfach fragen. Und: zum Abendessen <b>lange Hose</b>, keine Badeshorts.</span></span></li>
+    </ul>
+    <div class="note tip"><b>Kleiner Tipp aus Gästebewertungen:</b> Geht zum Abendessen <b>gleich zur Öffnung</b>. Später trocknet das Buffet unter den Wärmelampen aus. Und putzt die Balkonscheibe, bevor ihr filmt — in Torremolinos leben viele wilde Halsbandsittiche, die hinterlassen Spuren.</div>
+  </div>
+
+  <!-- SCHRITT 6 -->
+  <div class="card" data-searchable data-kw="schritt 6 lidl einkauf erste erledigung wasser">
+    <h3><span class="stepnum">6</span> Erster Weg danach: Lidl</h3>
+    <p>7–8 Minuten zu Fuß, Avda. Carlota Alessandri. Das ist die Erledigung mit dem besten Verhältnis von Aufwand zu Ersparnis auf der ganzen Reise.</p>
+    <ul class="check">
+      <li><input type="checkbox" data-k="ank-wasser"><span><b>Wasser</b> — 6er-Pack ~2 €. Am Chiringuito kostet <i>eine</i> Flasche 2,50–3,50 €. Über zehn Tage sind das 80–120 €.</span></li>
+      <li><input type="checkbox" data-k="ank-bier"><span><b>Bier</b> — 6er-Pack 2,50–3,50 €</span></li>
+      <li><input type="checkbox" data-k="ank-matte"><span><b>Strandmatte + billiger Sonnenschirm</b> (15–25 €) — ersetzt 16 € Liegengebühr pro Tag. Rechnet sich ab Tag 2.</span></li>
+      <li><input type="checkbox" data-k="ank-snacks"><span><b>Obst und Snacks</b> fürs Auto und die Drehtage</span></li>
+    </ul>
+    <div class="note warn"><b>Merkt euch: sonntags haben Lidl, Mercadona und Aldi geschlossen.</b> Immer samstags vorsorgen.</div>
+  </div>
+
+  <!-- NOTFALL -->
+  <div class="card" data-searchable data-kw="wenn es streit gibt beschwerde hoja de reclamaciones notbremse">
+    <h3>Wenn es Streit gibt</h3>
+    <p><b>Unterschreibt nichts, was ihr nicht versteht.</b> Lasst euch Zeit, auch wenn hinter euch eine Schlange steht — das ist deren Problem, nicht eures.</p>
+    <div class="note tip"><b>Die Notbremse in Spanien:</b> Jeder Betrieb muss ein offizielles Beschwerdeformular führen und auf Verlangen aushändigen — das <b>„Libro de Hojas de Quejas y Reclamaciones"</b>. Der Satz<br><br>
+      <b><i>„Deme la hoja de reclamaciones, por favor."</i></b><br><span class="small">(DE-me la O-cha de re-kla-ma-THIO-nes por fa-WOR)</span><br><br>
+      löst erfahrungsgemäß etwa neun von zehn Streitfällen sofort zu euren Gunsten — weil der Betrieb die Beschwerde an die Junta de Andalucía melden muss. Das gilt am Mietwagenschalter genauso wie im Restaurant.</div>
+    <p class="small">Und falls doch etwas abgebucht wird, das nicht stimmt: schriftlich widersprechen, eure Videos beilegen, und parallel bei der Kreditkarte einen Chargeback einleiten.</p>
+  </div>
+
+  <div class="card" data-searchable data-kw="rückgabe letzter tag abgeben auto">
+    <h3>Und ganz am Ende: die Rückgabe</h3>
+    <p>Steht ausführlich bei <a href="#tage" data-goto="tage">Tag 11</a>, aber das Wichtigste in Kurzform:</p>
+    <ul class="check">
+      <li><input type="checkbox" data-k="ank-r1"><span><b>Zweites Video</b> bei der Rückgabe — wieder rundum, mit Tankanzeige, Kilometerstand und sichtbarem Datum</span></li>
+      <li><input type="checkbox" data-k="ank-r2"><span><b>Volltanken auf dem Weg</b>, nicht am Flughafen (dort am teuersten). Quittung aufheben und fotografieren.</span></li>
+      <li><input type="checkbox" data-k="ank-r3"><span><b>Rückgabeprotokoll unterschreiben lassen</b>, am besten mit dem Vermerk <b>„sin daños"</b> (ohne Schäden). Weigert sich jemand: Video mit der Person im Bild.</span></li>
+      <li><input type="checkbox" data-k="ank-r4"><span><b>Nie im Nachtabwurf abgeben</b> — immer zu Öffnungszeiten, damit jemand den Zustand bestätigt.</span></li>
+      <li><input type="checkbox" data-k="ank-r5"><span><b>Kreditkartenabrechnung noch 3 Monate prüfen.</b></span></li>
+    </ul>
+    <p><button class="btn" id="resetAnkunft">Haken auf dieser Seite zurücksetzen</button></p>
+  </div>
+
+</section>
+
 <!-- ==================== TAGE ==================== -->
 <section class="panel" id="tage" role="tabpanel">
 
@@ -226,6 +368,8 @@
       <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
     </button>
     <div class="day-body">
+      <div class="note tip"><b>Für heute gibt es eine eigene Checkliste zum Abhaken</b> — Mietwagenschalter, Video am Auto, Rezeption, alles in der richtigen Reihenfolge.<br>
+        <a class="btn solid" href="#ankunft" data-goto="ankunft" style="margin-top:8px">Zur Ankunfts-Checkliste →</a></div>
       <ul class="tl">
         <li><div class="time">Nach der Landung · AGP</div><div class="what">Das 6-Minuten-Ritual am Mietwagen</div><p class="det">Ihr habt Kameras dabei — nutzt sie. Ein langsames <b>360°-Video im Gehen</b>, laut mitsprechen („Kratzer vorne links"). Extra filmen: alle vier <b>Felgen</b>, die <b>Windschutzscheibe von innen gegen den Himmel</b> (Steinschläge), das <b>Dach</b> (Klassiker bei erfundenen Schäden), Unterboden, Innenraum, <b>Tacho und Tankanzeige im selben Video</b>. Dieses Video separat wegspeichern und bis zur letzten Kreditkartenabrechnung nicht löschen.</p></li>
         <li><div class="time">Am Schalter</div><div class="what">Vier Zeilen im Vertrag prüfen, bevor ihr unterschreibt</div><p class="det"><b>Combustible: Lleno / Lleno</b> (voll/voll) · <b>Franquicia/Excess</b> wie gebucht · <b>Fianza</b> (geblockter Betrag) stimmt mit der Buchung überein · <b>Conductor adicional</b> — der zweite Name muss drinstehen, sonst ist bei einem Unfall der komplette Versicherungsschutz weg.<br>Und: <b>Liegt die V16-Warnleuchte im Handschuhfach?</b> Seit 01.01.2026 ist die vernetzte „baliza V16" in Spanien Pflicht, Warndreiecke gelten nicht mehr. Der Vermieter muss sie stellen. Fehlt sie: Ersatz verlangen und im Vertrag vermerken lassen.</p></li>
